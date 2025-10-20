@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 Things I Love About You 💖</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #ffe5ec, #ffe6f7);
+    color: #5e3b53;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+  }
+
+  #loveText {
+    font-size: 1.2em;
+    margin: 30px 0;
+    background: rgba(255,255,255,0.7);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 600px;
+    transition: opacity 0.5s ease;
+  }
+
+  .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  button {
+    background-color: #ff7aa8;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  button:hover {
+    background-color: #ff93bd;
+    transform: scale(1.05);
+  }
+
+  select {
+    font-size: 1em;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ff9ac5;
+    background-color: white;
+    color: #5e3b53;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  @media (max-width: 480px) {
+    #loveText {
+      font-size: 1em;
+    }
+
+    button, select {
+      width: 80%;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <h1>100 Things I Love About You 💕</h1>
+  <div id="loveText">Loading...</div>
+
+  <div class="controls">
+    <button id="nextBtn">Next ➜</button>
+    <select id="selector"></select>
+  </div>
+
+<script>
+const loves = [
+  "The way her eyes light up when she talks about something she loves.",
+  "How her smile feels like it can change the mood of my whole day.",
+  "Her smile when she teases or jokes around.",
+  "The way she looks when she’s focused.",
+  "That laugh that never fails to make me smile too.",
+  "The little face she does when I compliment her.",
+  "The way her hair falls, even when she thinks it looks messy or bad.",
+  "How she looks even better when she’s not trying to look good.",
+  "The glow she gets when she’s happy, even over the smallest things.",
+  "Her voice, if a sound could feel like home.",
+  "How her bare face looks, even when she doesn't like it, I still never fail to see her under the light of the most beautiful girl.",
+  "How beautiful she is just talking.",
+  "Her hands, whether we're doing silly things with our fingers or when it's doing something she loves like drawing.",
+  "The little tilt of her head she does when doing something.",
+  "Her smile, that smile that she might not like but is something I'll forever have ingrained in my mind.",
+  "The way she says my name.",
+  "Her honesty, even when it’s blunt, it’s real.",
+  "The way her voice changes when she’s being playful.",
+  "How she can make even random topics sound interesting.",
+  "The way she is when she's teasing or being sarcastic with me.",
+  "The way she jokes and laughs so freely, that I can't help but just admire how beautiful she looks even when she doesn't think so.",
+  "When she opens up to me about things.",
+  "The way she makes me feel calm just by talking.",
+  "How she listens to me when I have something to say.",
+  "When she gets excited mid-conversation and starts talking faster.",
+  "Her curiosity — she always wants to understand, not just know.",
+  "How she cares about the people close to her.",
+  "The way she tries to find logic in her emotions, even if it’s hard.",
+  "Her creativity and the way her mind colors the world differently, in a way that I love so much.",
+  "Her work ethic. She always strives for the best of herself.",
+  "How she’s never satisfied with “good enough.”",
+  "The deep thoughts she's comfortable enough to share with me.",
+  "The way she challenges me, in a good way, to be a better version of myself also.",
+  "Her ability to see both sides of things.",
+  "How she remembers small details that most other people don't.",
+  "She makes me feel safe without even trying.",
+  "She’s soft where the world is harsh.",
+  "Her presence.",
+  "The way she cares, even when she conveys that in many different ways.",
+  "How she can make my worst days feel lighter.",
+  "Her ability to love deeply — even when she doubts herself.",
+  "How she feels like an anchor in life when the waves get harsh.",
+  "Her constant support to help me push through.",
+  "How I can feel appreciated, even through a screen.",
+  "She makes me believe in myself everyday.",
+  "How beautiful I find imperfections she sees in herself, like her clumsiness, because it reminds me that I don't care what they are, because I love everything about her.",
+  "The little things she does like fixing her hair when she's focused.",
+  "The way she gets sarcastic when I compliment her.",
+  "How she tries to stay strong even when she’s tired.",
+  "Her habit of taking care of everyone around her.",
+  "How she gets passionate about things she loves.",
+  "When she gets competitive, it's one of the things I will always admire her for.",
+  "Her tiny acts of kindness that she doesn’t even realize she does.",
+  "The way she apologizes even when she’s not in the wrong.",
+  "Her ability to forgive but not forget.",
+  "The way I imagine her beautiful voice when I read her texts.",
+  "When she yaps to me and all I can do is listen while thinking how lucky I am to have such a beautiful girl who would even spend time just to tell me about her day.",
+  "Her selfies, even the ones she “hates.”",
+  "When she's humming or singing her favorite songs.",
+  "When she doesn't believe when everyone calls her beautiful, but she really is. And how I know how much more beautiful she is beyond her appearance.",
+  "Her random bursts of energy. Somehow I feel like I've been recharged too.",
+  "How she is so dedicated to the things she sets her mind to.",
+  "Her handwriting, no matter how messy she says it is.",
+  "The small updates she gives me about her day.",
+  "The way she cares about doing things right.",
+  "Her kindness, even when no one’s watching.",
+  "Her dedication to her friendships.",
+  "Her strength.",
+  "Her ability to stand her ground.",
+  "Her confidence when she finally lets herself have it.",
+  "How genuine she is, whether being honest to others to help them or to make them realize things they haven't before.",
+  "Her humor, I love how she knows how to laugh at life, not just through it.",
+  "The way she sees beauty in simple things.",
+  "Her patience even when she’s frustrated.",
+  "Her resilience after bad days.",
+  "Her impact on people.",
+  "The way her eyes locked with mine for the first time. I'll never forget it.",
+  "How cute she is when kilig siya.",
+  "The way she unintentionally inspires me everyday even when she doesn't realize it.",
+  "How she doesn’t see how beautiful she already is.",
+  "The fact that she keeps showing up, even when life gets heavy.",
+  "The small ways she expresses how much she cares.",
+  "How she’s still herself no matter what.",
+  "Her ability to make silence feel comfortable.",
+  "How she changes a room just by being in it.",
+  "She helps me keep my head up even through the hardest times.",
+  "How she never fails to remind me how lucky I am for her.",
+  "How she supports me on days I don't feel like myself.",
+  "She reminds me it’s okay to feel things deeply.",
+  "How she feels like the best part of my day every day.",
+  "That feeling when I make her proud.",
+  "How she gives my life a kind of warmth I didn’t know I was missing.",
+  "She’s proof that beauty isn’t just seen but also felt.",
+  "She makes “ordinary” feel special.",
+  "She’s the reason I look forward to my notifications all the time.",
+  "She makes me believe in myself.",
+  "She’s my reminder to always be proud of myself.",
+  "How she's on my mind, even in little things I do, every single day.",
+  "How she's my favorite person in this whole wide world.",
+  "I love the way she makes me feel loved."
+];
+
+let index = 0;
+const loveText = document.getElementById('loveText');
+const nextBtn = document.getElementById('nextBtn');
+const selector = document.getElementById('selector');
+
+// Fill dropdown
+for (let i = 0; i < loves.length; i++) {
+  const option = document.createElement('option');
+  option.value = i;
+  option.textContent = `#${i+1}`;
+  selector.appendChild(option);
+}
+
+function showLove(i) {
+  loveText.style.opacity = 0;
+  setTimeout(() => {
+    loveText.textContent = `${i+1}. ${loves[i]}`;
+    loveText.style.opacity = 1;
+  }, 300);
+  selector.value = i;
+}
+
+nextBtn.addEventListener('click', () => {
+  index = (index + 1) % loves.length;
+  showLove(index);
+});
+
+selector.addEventListener('change', () => {
+  index = parseInt(selector.value);
+  showLove(index);
+});
+
+// Initialize first one
+showLove(0);
+</script>
+
+</body>
+</html>
